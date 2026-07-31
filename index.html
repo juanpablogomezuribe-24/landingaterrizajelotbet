@@ -290,7 +290,13 @@
     <div class="fixed top-[20%] left-1/2 -translate-x-1/2 w-[60vw] h-[60vw] bg-cyan-400/5 rounded-full blur-[150px] pointer-events-none z-[-1]"></div>
 
     <script>
-        lucide.createIcons();
+        try {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        } catch (e) {
+            console.warn('Los íconos no cargaron, pero la página sigue funcionando.');
+        }
 
         function openChest(element) {
             if(element.classList.contains('chest-unlocking')) return;
@@ -341,7 +347,7 @@
             
             btn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> Procesando...';
             btn.disabled = true;
-            lucide.createIcons();
+            try { if (typeof lucide !== 'undefined') lucide.createIcons(); } catch(e){}
             
             try {
                 if (supabase) {
@@ -358,7 +364,7 @@
 
                 formContent.classList.add('hidden');
                 successMsg.classList.remove('hidden');
-                lucide.createIcons();
+                try { if (typeof lucide !== 'undefined') lucide.createIcons(); } catch(e){}
                 
                 setTimeout(() => {
                     window.location.href = 'https://lotbet.vip/signin?affiliateRegisterToken=OIcx5QNvlmDlHdzfDb9EEa6EkxnBAVdL';
@@ -368,7 +374,7 @@
                 alert("Ocurrió un error. Intenta nuevamente.");
                 btn.innerHTML = 'Regístrate y reclama <i data-lucide="arrow-right" class="w-5 h-5"></i>';
                 btn.disabled = false;
-                lucide.createIcons();
+                try { if (typeof lucide !== 'undefined') lucide.createIcons(); } catch(e){}
             }
         }
     </script>
