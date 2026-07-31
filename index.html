@@ -319,8 +319,12 @@
         const supabaseAnonKey = 'sb_publishable_zTGxsIieVtsl3Spbyj4a0w_psxB4v6n';
         
         let supabase;
-        if (supabaseUrl !== 'YOUR_SUPABASE_URL') {
-            supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+        try {
+            if (supabaseUrl !== 'YOUR_SUPABASE_URL' && window.supabase) {
+                supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+            }
+        } catch (e) {
+            console.error("Error inicializando Supabase:", e);
         }
 
         async function claimBonus() {
