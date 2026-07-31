@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Supabase SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.292.0/umd/lucide.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         body {
@@ -290,14 +290,7 @@
     <div class="fixed top-[20%] left-1/2 -translate-x-1/2 w-[60vw] h-[60vw] bg-cyan-400/5 rounded-full blur-[150px] pointer-events-none z-[-1]"></div>
 
     <script>
-        try {
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-        } catch (e) {
-            console.warn('Los íconos no cargaron, pero la página sigue funcionando.');
-        }
-
+        // Lógica de UI (Separada para garantizar que siempre funcione)
         function openChest(element) {
             if(element.classList.contains('chest-unlocking')) return;
             
@@ -318,6 +311,16 @@
             
             modal.classList.remove('translate-y-8');
             modal.classList.add('translate-y-0');
+        }
+    </script>
+
+    <script>
+        try {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        } catch (e) {
+            console.warn('Los íconos no cargaron, pero la página sigue funcionando.');
         }
 
         // Configuración de Supabase
